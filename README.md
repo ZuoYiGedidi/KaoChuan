@@ -1,116 +1,51 @@
-# AI Time Management Tool for Independent Developers
+# AI 时间管理助手
 
-An AI-powered time management tool designed specifically for independent developers and solo entrepreneurs. It automatically identifies which role you're in, intelligently schedules tasks, and helps you manage context switching — so you can focus on building instead of juggling.
+面向独立开发者的 AI 时间管理工具，**完全免费开源**。
 
-## Problem
+## 简介
 
-Independent developers face unique time management challenges:
+独立开发者常常需要在开发者、设计师、市场营销、客户支持等多个角色之间频繁切换，缺乏外部约束和结构化的工作安排，难以准确预估任务耗时，工作与生活的边界也容易模糊。AI 时间管理助手通过 AI 驱动的角色识别和智能调度，帮助独立开发者更高效地管理时间。
 
-- **Constant context switching** between roles (developer, designer, marketer, support)
-- **No external accountability** or structure in solo work
-- **Poor task duration estimation** leading to missed deadlines
-- **Blurred work-life boundaries**
-- **No intelligent assistance** in prioritizing what to work on next
+## 核心功能
 
-## Core Features
+- **自动角色识别**：通过监控活动应用、窗口标题、Git 提交、日历事件等，实时识别当前所处的角色（开发/设计/营销/客服等），并生成时间分配仪表盘。
+- **智能任务调度**：基于任务优先级、历史效率数据、日历事件和截止日期，通过 Claude API 进行动态调度，提供即时建议和时间块规划。
+- **上下文切换辅助**：一键角色切换，自动管理应用状态快照（打开的文件、浏览器标签组），支持渐进式上下文切换。
+- **移动伴侣**：基于 React Native + Expo 的移动端应用，支持智能推送通知、语音/文字快速录入任务、每日时间分配仪表盘。
 
-### Automatic Role Recognition
+## 技术栈
 
-The tool monitors your activity sources — active applications, window titles, Git commits, calendar events, and optionally browser tab content — to detect which role you're currently in. All raw data stays on your device; only anonymized feature vectors are sent to the cloud for AI classification. You get real-time role detection, a time allocation dashboard, and efficiency metrics.
+| 层级 | 技术 |
+|------|------|
+| 桌面框架 | Tauri 2.0 (Rust + React) |
+| 前端 | React 19 + TypeScript + Tailwind CSS |
+| 可视化 | Recharts |
+| 状态管理 | Zustand |
+| 后端 | Rust (sysinfo, sqlx + SQLite) |
+| 移动端 | React Native + Expo |
+| AI 引擎 | Claude 3.5 Sonnet API |
+| 浏览器扩展 | Chrome Extension Manifest V3 |
 
-### Intelligent Task Scheduling
+## 快速开始
 
-Powered by Claude 3.5 Sonnet API, the scheduling engine considers your task priorities, estimated durations, current role context, historical efficiency data, and calendar events. It produces immediate recommendations, time-block plans, and proactive alerts when role balance drifts.
+项目目前处于设计阶段，尚未开始正式开发。
 
-### Context Switching Assistance
+开发路线图：
 
-Switch roles with one click. The tool manages your environment: saving and restoring application states, grouping browser tabs, and gradually transitioning context to reduce mental fatigue. Pre-configured role environments let you launch the right tools instantly.
+- **Phase 1（第 1-2 月）**：Tauri 基础搭建、进程/窗口监控、SQLite 数据记录、基于规则的角色检测、基础仪表盘 UI
+- **Phase 2（第 3-5 月）**：云端 AI 集成、智能调度引擎、上下文切换辅助、浏览器扩展、移动端应用、日历集成
+- **Phase 3（第 6-8 月）**：高级分析与洞察、IDE 插件（VS Code / JetBrains）、公开 API、团队协作功能、隐私增强、性能优化
 
-### Mobile Companion
+详细的系统设计请参阅 [设计文档](./2026-05-25-ai-time-management-tool-design.md)。
 
-A React Native + Expo mobile app provides smart location/time-aware push notifications ("At a café — good time for creative work"), quick voice/text task entry, a daily time allocation dashboard, and role balance insights on the go.
+## 贡献指南
 
-## Tech Stack
+欢迎提交 Pull Request！
 
-| Layer | Technology |
-|-------|-----------|
-| **Desktop Framework** | Tauri 2.0 (Rust + React) |
-| **Frontend** | React 19 + TypeScript, Tailwind CSS, Recharts, Zustand |
-| **Backend (Rust)** | sysinfo (process monitoring), sqlx + SQLite (local DB), system tray integration |
-| **Mobile** | React Native + Expo |
-| **AI** | Claude 3.5 Sonnet API (cloud-based scheduling & role classification) |
-| **Cloud Services** | PostgreSQL, OAuth 2.0 + JWT authentication |
-| **Browser Extension** | Chrome Extension Manifest V3, local WebSocket integration |
-| **Calendar** | Google Calendar, Outlook, CalDAV (read-only) |
+- 在提交 PR 前，请先通过 Issue 讨论你希望实现的功能或修复的问题
+- 请遵循项目的代码风格和提交规范
+- 确保通过所有测试
 
-## Architecture Overview
+## 许可证
 
-```
-Desktop App (Tauri + React)
-    ├── Rust Backend (sysinfo, sqlx, SQLite)
-    │       ├── Raw Data (never leaves device)
-    │       ├── Local Feature Extraction
-    │       └── Encrypted Transmission → Cloud AI
-    ├── React Frontend (Dashboard, Roles, Tasks, Analytics)
-    ├── System Tray Integration
-    └── Local WebSocket → Browser Extension
-
-Mobile App (React Native + Expo)
-    ├── Smart Notifications
-    ├── Task Input (voice/text)
-    └── Dashboard & Insights
-
-Cloud Services
-    ├── Claude 3.5 Sonnet API (scheduling & classification)
-    ├── PostgreSQL (encrypted sync)
-    └── OAuth 2.0 + JWT Auth
-```
-
-**Privacy-first design**: Raw data (window titles, URLs, file paths) never leaves the device. Only anonymized feature vectors are transmitted with end-to-end encryption. Cloud AI features are opt-in — the tool can run 100% locally.
-
-## Development Roadmap
-
-### Phase 1: MVP (Months 1–2)
-- Tauri base setup with React frontend
-- Basic process/window monitoring
-- Local SQLite database for time tracking
-- Simple rule-based role detection
-- Basic dashboard UI
-- System tray integration
-
-### Phase 2: AI Enhancement (Months 3–5)
-- Cloud AI integration (Claude API)
-- Intelligent scheduling engine
-- Context switching assistance
-- Browser extension v1
-- Mobile app (React Native)
-- Calendar integration
-
-### Phase 3: Polish & Ecosystem (Months 6–8)
-- Advanced analytics and insights
-- IDE plugins (VS Code, JetBrains)
-- Public API for third-party integrations
-- Team collaboration features
-- Advanced privacy controls
-- Performance optimizations
-
-## Business Model
-
-| Tier | Price | Includes |
-|------|-------|----------|
-| **Free** | $0 | Basic time tracking, rule-based role detection, 7-day history, community support |
-| **Pro** | $9/month or $89/year | Cloud AI scheduling, unlimited history, cross-device sync, advanced analytics, priority support, browser extension, calendar integration |
-| **Team** | $29/month (up to 5 users) | Everything in Pro, team role balance, collaborative planning, team analytics, admin controls |
-
-## System Requirements
-
-- **Desktop**: Windows 10+, macOS 11+, Linux (Ubuntu 20.04+); 4 GB RAM minimum; 100 MB disk
-- **Mobile**: iOS 14+, Android 8+; 50 MB storage
-
-## License
-
-MIT — see [LICENSE](./LICENSE) for details.
-
----
-
-*Design specification: [2026-05-25-ai-time-management-tool-design.md](./2026-05-25-ai-time-management-tool-design.md)*
+本项目基于 [MIT License](./LICENSE) 开源。

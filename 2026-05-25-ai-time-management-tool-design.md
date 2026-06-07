@@ -5,6 +5,8 @@
 **Author**: Marvis with User Input  
 **Version**: 1.0
 
+> **本项目完全免费开源**
+
 ## 1. Overview
 
 ### 1.1 Problem Statement
@@ -214,37 +216,6 @@ An AI-powered time management tool that:
 - [ ] Advanced privacy controls
 - [ ] Performance optimizations
 
-## 6. Business Model
-
-### 6.1 Pricing Tiers
-**Free Tier:**
-- Basic time tracking
-- Local role detection (rule-based)
-- 7-day history
-- Community support
-
-**Pro Tier:** $9/month or $89/year
-- Cloud AI scheduling
-- Unlimited history
-- Cross-device sync
-- Advanced analytics
-- Priority support
-- Browser extension
-- Calendar integration
-
-**Team Tier:** $29/month per team (up to 5 users)
-- Everything in Pro
-- Role balance across team
-- Collaborative planning
-- Team analytics
-- Admin controls
-
-### 6.2 Market Positioning
-- **Competitors:** RescueTime, Toggl Track, Clockify, Timely
-- **Differentiator:** AI-powered role recognition and scheduling specifically for developers
-- **GTM:** Direct to indie devs via Twitter, Reddit, Hacker News, Product Hunt
-- **Monetization:** Free tier for discovery, Pro for serious users
-
 ## 7. Technical Requirements & Constraints
 
 ### 7.1 System Requirements
@@ -277,16 +248,10 @@ An AI-powered time management tool that:
 3. **AI accuracy** - Role classification may have false positives/negatives
 4. **Battery impact** - Continuous monitoring could affect laptop battery life
 
-### 8.2 Business Risks
-1. **User adoption** - Developers may be resistant to yet another time tracking tool
-2. **Privacy concerns** - Even with encryption, some users may avoid cloud AI
-3. **Pricing sensitivity** - $9/month may be high for some indie developers
-4. **Competition** - Existing tools could add similar AI features
-
 ### 8.3 Mitigation Strategies
 - Start with small, focused MVP to validate core value
 - Strong privacy-first messaging and transparent data practices
-- Flexible pricing with annual discounts and potential student pricing
+- Community-driven development based on user feedback
 - Rapid iteration based on early user feedback
 
 ## 9. Success Metrics
@@ -296,13 +261,6 @@ An AI-powered time management tool that:
 - Session length and frequency
 - Feature adoption rates (AI scheduling, context switching, etc.)
 - User retention (7-day, 30-day, 90-day)
-
-### 9.2 Business Metrics
-- Conversion rate (Free → Pro)
-- Monthly recurring revenue (MRR)
-- Customer acquisition cost (CAC)
-- Lifetime value (LTV)
-- Net promoter score (NPS)
 
 ### 9.3 User Value Metrics
 - Time saved per day (self-reported)
