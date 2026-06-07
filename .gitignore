@@ -1,0 +1,26 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Development config
+.superpowers/
+
+# Tauri build output
+target/
+
+# Distribution artifacts
+dist/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Logs
+*.log
+
+# SQLite databases
+*.sqlite
